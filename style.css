@@ -1,0 +1,331 @@
+/* =========================================
+   Modern AI Assistant Design System
+========================================= */
+:root {
+    --bg-color: #0d1117;
+    --app-bg: rgba(22, 27, 34, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --user-msg-bg: linear-gradient(135deg, #00C6FF, #0072FF);
+    --bot-msg-bg: rgba(48, 54, 61, 0.8);
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --accent: #0072FF;
+    --accent-hover: #00C6FF;
+    --font-family: 'Outfit', sans-serif;
+    --border-radius-lg: 20px;
+    --border-radius-md: 14px;
+    --border-radius-sm: 8px;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-blur: blur(16px);
+}
+
+/* =========================================
+   Global Reset & Environment Layout
+========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Animated Blobs */
+.blob-1, .blob-2 {
+    position: absolute;
+    filter: blur(80px);
+    z-index: 0;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: #0072FF;
+    top: -100px;
+    left: -100px;
+    animation-delay: -5s;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: #FF007A;
+    bottom: -50px;
+    right: -50px;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 100px) scale(1.2); }
+}
+
+/* =========================================
+   Main Application Container
+========================================= */
+.app-container {
+    position: relative;
+    z-index: 1;
+    width: 95%;
+    max-width: 480px;
+    height: 85vh;
+    max-height: 800px;
+    background: var(--app-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* =========================================
+   Header Section
+========================================= */
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(22, 27, 34, 0.4);
+}
+
+.header-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #FF4B2B, #FF416C);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+}
+
+.header-info h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.header-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.header-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2ea043;
+    border-radius: 50%;
+    margin-right: 6px;
+    box-shadow: 0 0 10px #2ea043;
+}
+
+/* =========================================
+   Chatbox Area
+========================================= */
+.chatbox {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.chatbox::-webkit-scrollbar {
+    width: 6px;
+}
+.chatbox::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chatbox::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+.chatbox::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+   Messages
+========================================= */
+.message {
+    display: flex;
+    align-items: flex-end;
+    max-width: 85%;
+    animation: slideUp 0.3s ease-out forwards;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.bot {
+    align-self: flex-start;
+}
+
+.message-icon {
+    font-size: 20px;
+    margin: 0 10px;
+    color: var(--text-secondary);
+}
+
+.user .message-icon {
+    display: none; /* Hide icon for user by default unless wanted */
+}
+
+.message-content {
+    padding: 14px 18px;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user .message-content {
+    background: var(--user-msg-bg);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.bot .message-content {
+    background: var(--bot-msg-bg);
+    border: 1px solid var(--border-color);
+    border-bottom-left-radius: 4px;
+}
+
+.welcome-message {
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   Loading Indicator
+========================================= */
+.loading-message .message-content {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================
+   Input Area
+========================================= */
+.input-area {
+    padding: 15px 20px;
+    background: rgba(22, 27, 34, 0.6);
+    border-top: 1px solid var(--border-color);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 6px 6px 6px 20px;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0, 114, 255, 0.2);
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: var(--font-family);
+    outline: none;
+    padding: 10px 0;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.send-btn {
+    background: var(--accent);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.send-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 114, 255, 0.5);
+}
+
+.send-btn:active {
+    transform: scale(0.95);
+}

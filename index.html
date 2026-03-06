@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym AI Assistant</title>
+    <!-- Modern Font: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+
+    <div class="app-container">
+        <header class="chat-header">
+            <div class="header-icon">
+                <i class="ph-fill ph-barbell"></i>
+            </div>
+            <div class="header-info">
+                <h1>Gym AI Assistant</h1>
+                <p>Your personal AI fitness coach</p>
+            </div>
+            <div class="header-status">
+                <span class="status-dot"></span> Online
+            </div>
+        </header>
+
+        <main id="chatbox" class="chatbox">
+            <div class="message bot welcome-message">
+                <i class="ph-fill ph-robot message-icon"></i>
+                <div class="message-content">
+                    <p>Hello! I'm your Gym AI Assistant. Ask me anything about fitness, workouts, or nutrition. 💪</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <input id="message" type="text" placeholder="Ask a gym question..." autocomplete="off"/>
+                <button onclick="sendMessage()" id="send-btn" class="send-btn" title="Send message">
+                    <i class="ph-bold ph-paper-plane-right"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

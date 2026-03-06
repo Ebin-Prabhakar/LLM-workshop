@@ -49,6 +49,75 @@ Rules:
 # Gym Query Filter
 # =========================
 GYM_KEYWORDS = [
+# =========================
+# SPORTS & ATHLETICS
+# =========================
+
+# Ball sports
+"football","soccer","futsal","basketball","volleyball","beach volleyball",
+"cricket","baseball","softball","handball","netball","rugby","rugby union",
+"rugby league","american football","field hockey","ice hockey","lacrosse",
+"water polo","polo","dodgeball","kickball","floorball","bandy",
+
+# Racquet sports
+"tennis","table tennis","ping pong","badminton","squash","racquetball",
+"padel","pickleball","soft tennis",
+
+# Combat sports
+"boxing","kickboxing","muay thai","mma","mixed martial arts","judo",
+"karate","taekwondo","wrestling","brazilian jiu jitsu","bjj","sambo",
+"kung fu","capoeira","krav maga","aikido","fencing","kendo",
+
+# Track and field
+"athletics","track and field","sprinting","100m sprint","200m sprint",
+"400m sprint","800m run","1500m run","5000m run","10000m run",
+"marathon","relay race","4x100 relay","4x400 relay","hurdles",
+"steeplechase","long jump","triple jump","high jump","pole vault",
+"shot put","discus throw","hammer throw","javelin throw","decathlon",
+"heptathlon",
+
+# Endurance sports
+"running","distance running","trail running","ultra marathon",
+"cycling","road cycling","mountain biking","bmx","track cycling",
+"swimming","open water swimming","triathlon","duathlon",
+"rowing","kayaking","canoeing","paddleboarding",
+
+# Gymnastics
+"gymnastics","artistic gymnastics","rhythmic gymnastics",
+"trampoline gymnastics","acrobatics","tumbling","parkour",
+
+# Strength sports
+"powerlifting","bodybuilding","olympic weightlifting",
+"weightlifting","strongman","strongwoman","crossfit",
+
+# Winter sports
+"skiing","alpine skiing","cross country skiing","snowboarding",
+"biathlon","bobsleigh","skeleton","luge","curling","ice skating",
+"figure skating","speed skating","ice climbing",
+
+# Water sports
+"surfing","windsurfing","kitesurfing","sailing","jet skiing",
+"scuba diving","freediving","water skiing","wakeboarding",
+"dragon boat racing",
+
+# Adventure sports
+"rock climbing","bouldering","mountaineering","hiking","trekking",
+"paragliding","skydiving","base jumping","caving","orienteering",
+
+# Motor sports (physical performance related)
+"motorsport","formula 1","motorcycle racing","motocross","rally racing",
+
+# Fitness sports
+"cross training","functional fitness","calisthenics","street workout",
+"hiit","plyometrics","agility drills","speed drills",
+
+# Esports physical conditioning
+"esports training","gamer fitness","reaction training",
+
+# General sports terms
+"sports training","athletic performance","athlete conditioning",
+"sports science","sports physiology","sports biomechanics",
+"strength and conditioning","sports nutrition","athletic recovery"
 
 # General fitness
 "gym","fitness","exercise","workout","training","strength","conditioning",
