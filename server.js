@@ -19,6 +19,10 @@ py.stdout.on("data",(data)=>{
 output+=data.toString()
 })
 
+py.stderr.on("data", (data) => {
+console.error("Python Error: " + data.toString());
+})
+
 py.stdin.write(question+"\n")
 py.stdin.end()
 
